@@ -55,12 +55,11 @@ app.get('/weather', (req, res) => {
             res.send({ error });
             return;
         }
-        forecast(latitude, longitude, (error, { summary, temperature, precipProbability }) => {
+        forecast(latitude, longitude, (error, forecast) => {
             if (error) {
                 res.send({ error });
                 return;
             }
-            const forecast = summary + ` It is currently ` + temperature + ` degrees out. There is a ` + precipProbability + `% chance of rain.`;
 
             res.send({
                 forecast,
